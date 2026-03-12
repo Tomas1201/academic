@@ -1,4 +1,4 @@
-package com.tomas.demo.features.user;
+package com.tomas.demo.features.student;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,8 +16,8 @@ import jakarta.validation.constraints.Size;
 import com.tomas.demo.features.career.careerModel;
 
 @Entity
-@Table(name = "users")
-public class userModel {
+@Table(name = "students")
+public class studentModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

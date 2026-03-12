@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.tomas.demo.features.user.userModel;
+import com.tomas.demo.features.student.studentModel;
 
 @Entity
 @Table(name = "career")
@@ -32,5 +32,5 @@ public class careerModel {
     private String description;
 
     @ManyToMany(mappedBy = "careers")
-    private Set<userModel> students = new HashSet<>();
+    private Set<studentModel> students = new HashSet<>();
 }
