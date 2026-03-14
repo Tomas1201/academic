@@ -58,4 +58,60 @@ public class studentModel {
           inverseJoinColumns = @JoinColumn(name = "career_id")
         )
     private Set<careerModel> careers = new HashSet<>();
+
+    public int getFile() {
+        return this.file;
+    }
+
+    public void setFile(int file) {
+        this.file = file;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDni() {
+        return this.dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<careerModel> getCareers() {
+        return this.careers;
+    }
+
+    public void setCareers(Set<careerModel> careers) {
+        this.careers = careers;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

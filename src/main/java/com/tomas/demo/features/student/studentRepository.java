@@ -1,8 +1,12 @@
 package com.tomas.demo.features.student;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import com.tomas.demo.features.student.studentModel;
 import java.util.Optional;
+
+@Repository
 public interface studentRepository extends JpaRepository<studentModel, Integer> {
     
     public Optional<studentModel> findByEmail(String email);

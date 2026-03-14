@@ -1,18 +1,17 @@
-package com.tomas.demo.features.career;
+package com.tomas.demo.features.subject;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-import jakarta.persistence.*;
+
 import java.util.HashSet;
 import java.util.Set;
-
-import com.tomas.demo.features.student.studentModel;
-import com.tomas.demo.features.subject.subjectModel;
+import com.tomas.demo.features.career.careerModel;
 
 @Entity
-@Table(name = "career")
-public class careerModel {
-
+@Table(name = "subject")
+public class subjectModel {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -32,19 +31,21 @@ public class careerModel {
     @Column(name = "description", nullable = false)
     private String description;
 
-    @ManyToMany(mappedBy = "careers")
-    private Set<studentModel> students = new HashSet<>();
+    @NotNull
+    @Column(name = "credits", nullable = false)
+    private int credits;
 
-    @ManyToMany(mappedBy = "careers")
-     @JoinTable(
-          name = "career_subject", 
-          joinColumns = @JoinColumn(name = "career_id"), 
-          inverseJoinColumns = @JoinColumn(name = "subject_id")
-        )
-    private Set<subjectModel> subjects = new HashSet<>();
+    @NotNull
+    @Column(name = "semester", nullable = false)
+    private int semester;
+
+
+    
+    @ManyToMany(mappedBy = "subjects")
+    private Set<careerModel> careers = new HashSet<>();
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(int id) {
@@ -52,7 +53,7 @@ public class careerModel {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -60,7 +61,7 @@ public class careerModel {
     }
 
     public String getCode() {
-        return code;
+        return this.code;
     }
 
     public void setCode(String code) {
@@ -68,26 +69,34 @@ public class careerModel {
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
         this.description = description;
     }
 
-    public Set<studentModel> getStudents() {
-        return students;
+    public int getCredits() {
+        return this.credits;
     }
 
-    public void setStudents(Set<studentModel> students) {
-        this.students = students;
+    public void setCredits(int credits) {
+        this.credits = credits;
     }
 
-    public Set<subjectModel> getSubjects() {
-        return subjects;
+    public int getSemester() {
+        return this.semester;
     }
 
-    public void setSubjects(Set<subjectModel> subjects) {
-        this.subjects = subjects;
+    public void setSemester(int semester) {
+        this.semester = semester;
+    }
+
+    public Set<careerModel> getCareers() {
+        return this.careers;
+    }
+
+    public void setCareers(Set<careerModel> careers) {
+        this.careers = careers;
     }
 }
