@@ -6,6 +6,8 @@ import jakarta.validation.constraints.Size;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
+
 import com.tomas.demo.features.career.careerModel;
 
 @Entity
@@ -13,8 +15,8 @@ import com.tomas.demo.features.career.careerModel;
 public class subjectModel {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @NotNull
     @Size(min = 1, max = 50)
@@ -39,16 +41,18 @@ public class subjectModel {
     @Column(name = "semester", nullable = false)
     private int semester;
 
-
-    
     @ManyToMany(mappedBy = "subjects")
     private Set<careerModel> careers = new HashSet<>();
 
-    public int getId() {
+    @NotNull
+    @Column(name = "active", nullable = false)
+    private boolean active;
+
+    public UUID getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

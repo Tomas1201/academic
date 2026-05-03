@@ -1,4 +1,4 @@
-package com.tomas.demo.features.CorrelationCreate;
+package com.tomas.demo.features.CorrelationCreation;
 
-public class CorrelationController {
+public class CorrelationCreationController {
 }

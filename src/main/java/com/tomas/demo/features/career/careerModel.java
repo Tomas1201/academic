@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
 import com.tomas.demo.features.student.studentModel;
 import com.tomas.demo.features.subject.subjectModel;
 
@@ -32,11 +34,15 @@ public class careerModel {
     @Column(name = "description", nullable = false)
     private String description;
 
+    @NotNull
+    @Column(name = "active", nullable = false)
+    private boolean active;
+
     @ManyToMany(mappedBy = "careers")
     private Set<studentModel> students = new HashSet<>();
 
-    @ManyToMany(mappedBy = "careers")
-     @JoinTable(
+    @ManyToMany
+    @JoinTable(
           name = "career_subject", 
           joinColumns = @JoinColumn(name = "career_id"), 
           inverseJoinColumns = @JoinColumn(name = "subject_id")
@@ -89,5 +95,15 @@ public class careerModel {
 
     public void setSubjects(Set<subjectModel> subjects) {
         this.subjects = subjects;
+    }
+
+    public careerModel(int id, String name, String code, String description) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.description = description;
+    }
+
+    public careerModel() {
     }
 }

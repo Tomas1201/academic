@@ -3,7 +3,9 @@ package com.tomas.demo.features.subject;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.UUID;
+
 @Repository
-public interface subjectRepository extends JpaRepository<subjectModel, Integer> {
+public interface subjectRepository extends JpaRepository<subjectModel, UUID> {
     
 }

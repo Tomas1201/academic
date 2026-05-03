@@ -11,6 +11,8 @@ import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
+
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import com.tomas.demo.features.career.careerModel;
@@ -20,8 +22,8 @@ import com.tomas.demo.features.career.careerModel;
 public class studentModel {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @NotNull
     @Size(min = 1, max = 50)
@@ -58,6 +60,10 @@ public class studentModel {
           inverseJoinColumns = @JoinColumn(name = "career_id")
         )
     private Set<careerModel> careers = new HashSet<>();
+
+    @NotNull
+    @Column(name = "active", nullable = false)
+    private boolean active;
 
     public int getFile() {
         return this.file;
@@ -107,11 +113,11 @@ public class studentModel {
         this.careers = careers;
     }
 
-    public int getId() {
+    public UUID getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 }

@@ -1,10 +1,10 @@
 package com.tomas.demo.features.student;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import errors.ResourceNotFoundException;
+import com.tomas.demo.errors.ResourceNotFoundException;
+
+import java.util.UUID;
 
 @Service
 public class studentService {
@@ -12,7 +12,7 @@ public class studentService {
     @Autowired
     private studentRepository studentRepository;
 
-    public studentDTO getStudent(int id) {
+    public studentDTO getStudent(UUID id) {
         
         return studentMapper.toDTO(studentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Student not found")));
     }
@@ -25,7 +25,7 @@ public class studentService {
         return studentMapper.toDTO(studentRepository.save(student));
     }
 
-    public studentDTO deleteStudent(int id) {
+    public studentDTO deleteStudent(UUID id) {
         studentRepository.deleteById(id);
         return null;
     }

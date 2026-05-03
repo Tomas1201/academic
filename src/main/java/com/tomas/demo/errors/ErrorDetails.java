@@ -1,4 +1,4 @@
-package errors;
+package com.tomas.demo.errors;
 
 import java.time.LocalDateTime;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package errors;
+package com.tomas.demo.errors;
 
 import  org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

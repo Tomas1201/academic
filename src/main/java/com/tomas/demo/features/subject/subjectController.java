@@ -2,6 +2,8 @@ package com.tomas.demo.features.subject;
 
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
+import java.util.UUID;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -13,7 +15,7 @@ public class subjectController {
     private subjectService subjectService;
 
     @GetMapping("/{id}")
-    public ResponseEntity<subjectDTO> getSubject(@PathVariable int id) {
+    public ResponseEntity<subjectDTO> getSubject(@PathVariable UUID id) {
         return ResponseEntity.status(201).body(subjectService.getSubject(id));
     }
 
@@ -25,7 +27,7 @@ public class subjectController {
         return ResponseEntity.status(201).body(subjectService.updateSubject(subject));
     }
 
-    public ResponseEntity<subjectDTO> deleteSubject(@PathVariable int id) {
+    public ResponseEntity<subjectDTO> deleteSubject(@PathVariable UUID id) {
         return ResponseEntity.status(201).body(subjectService.deleteSubject(id));
     }
 }

@@ -3,7 +3,9 @@ package com.tomas.demo.features.subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import errors.ResourceNotFoundException;
+import com.tomas.demo.errors.ResourceNotFoundException;
+
+import java.util.UUID;
 
 @Service
 public class subjectService {
@@ -11,7 +13,7 @@ public class subjectService {
     @Autowired
     private subjectRepository subjectRepository;
 
-    public subjectDTO getSubject(int id) {
+    public subjectDTO getSubject(UUID id) {
         return subjectMapper.toDTO(subjectRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Subject not found")));
     }
 
@@ -23,7 +25,7 @@ public class subjectService {
         return subjectMapper.toDTO(subjectRepository.save(subject));
     }
 
-    public subjectDTO deleteSubject(int id) {
+    public subjectDTO deleteSubject(UUID id) {
         subjectRepository.deleteById(id);
         return null;
     }

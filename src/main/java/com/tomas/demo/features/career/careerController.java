@@ -1,6 +1,9 @@
 package com.tomas.demo.features.career;
 
 import org.springframework.web.bind.annotation.*;
+
+import jakarta.validation.Valid;
+
 import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,11 +20,11 @@ public class careerController {
         return ResponseEntity.status(201).body(careerService.getCareer(id));
     }
 
-    public ResponseEntity<careerDTO> createCareer(@RequestBody careerModel career) {
+    public ResponseEntity<careerDTO> createCareer(@Valid @RequestBody careerDTO career) {
         return ResponseEntity.status(201).body(careerService.createCareer(career));
     }
 
-    public ResponseEntity<careerDTO> updateCareer(@RequestBody careerModel career) {
+    public ResponseEntity<careerDTO> updateCareer(@Valid @RequestBody careerDTO career) {
         return ResponseEntity.status(201).body(careerService.updateCareer(career));
     }
 

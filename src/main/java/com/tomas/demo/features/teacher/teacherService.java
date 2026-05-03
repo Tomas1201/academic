@@ -2,7 +2,7 @@ package com.tomas.demo.features.teacher;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import errors.ResourceNotFoundException;
+import com.tomas.demo.errors.ResourceNotFoundException;
 
 @Service
 public class teacherService {

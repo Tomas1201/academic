@@ -41,6 +41,10 @@ public class teacherModel {
     @Column(name = "semester", nullable = false)
     private int semester;
 
+    @NotNull
+    @Column(name = "active", nullable = false)
+    private boolean active;
+
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
 
